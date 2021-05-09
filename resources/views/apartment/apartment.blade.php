@@ -1,0 +1,1 @@
+@props(['apartment' => $apartment])
