@@ -1,35 +1,49 @@
 @extends('layouts.guestlayout')
 
 @section('content')
- 
-
+   
 
 @if ($apartments->count())
 @foreach ($apartments as $apartment) 
-<div class="bg-white dark:bg-gray-800 overflow-hidden">
-  <div class="text-start w-1/2 py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
-      <h2 class="text-3xl font-extrabold text-black dark:text-white sm:text-4xl">
-          <span class="block">
-            <a href="{{ route('apartments.show',$apartment) }}">
-              {{ $apartment->apartmentName }}</a></div> 
-          </span>
-          <span class="block text-indigo-500">
-             {{ $apartment->created_at }}
-          </span>
-      </h2>
-      <p class="text-xl mt-4 text-gray-400">
-        {{ $apartment->purpose }}
-      </p>
-      <div class="lg:mt-0 lg:flex-shrink-0">
-          <div class="mt-12 inline-flex rounded-md shadow">
-              <a href="{{ route('apartments.show',$apartment) }}" class="py-4 px-6  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
-                  Book Now!!
-              </a>
+
+<!-- component -->
+<section class="text-indigo-200 body-font p-5 bg-gray-900 m-3">
+  <Link to="coursedet">
+    <div class="mx-auto flex px-5  md:flex-row flex-col items-center jobcard">
+      <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center">
+        
+      <figure class="visible">
+
+      <div class="">
+
+      <div class="pt-10 px-2 sm:px-6">
+      <span class="inline-block py-1 px-2 rounded-full bg-green-600 text-white  text-xs font-bold tracking-widest mb-2">Featured Apartments</span>
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-100"> <a href="{{ route('apartments.show',$apartment) }}">  {{ $apartment->apartmentName }}</a></h1>
+          <p class="text-indigo-200 text-base pb-6">Purpose: <br>{{ $apartment->purpose }}</p>
+          <p class="text-indigo-200 text-base pb-8">{{ $apartment->description }}</p>
+          <div class="flex items-center justify-between">
+              <div class="flex items-center pb-12">
+                  <div class="h-12 w-12">
+                      <img src="https://tuk-cdn.s3.amazonaws.com/assets/components/testimonials/t_1.png" alt class="h-full w-full object-cover overflow-hidden rounded-full" />
+                  </div>
+                  <p class="text-indigo-200 font-bold ml-3">
+                    {{ $apartment->user->name }}<br />
+                      <span class="text-indigo-200 text-base font-light">{{ $apartment->created_at }}</span>
+                  </p>
+              </div>
+
           </div>
       </div>
-  </div>
-  {{-- <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60" class="absolute h-full max-w-1/2 hidden lg:block right-0 top-0"/> --}}
-</div> 
+      </div>
+      </figure>
+    
+      </div>
+      <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 sm:block hidden">
+        <img class="object-cover object-center rounded" alt="hero" src="https://tailwindcss.com/img/card-top.jpg" />
+      </div>
+    </div>
+    </Link>
+  </section>
 @endforeach  
 {{ $apartments->links() }}
 @else
