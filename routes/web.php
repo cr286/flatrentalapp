@@ -13,7 +13,7 @@ use App\Http\Controllers\HomeController;
  
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/apartmentlist', [HomeController::class, 'apartmentList'])->name('apartmentlist');
-
+Route::get('/apartmentdetails/{apartment}', [HomeController::class, 'apartmentdetails'])->name('apartmentdetails');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
